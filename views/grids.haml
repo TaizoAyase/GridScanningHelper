@@ -1,0 +1,61 @@
+!!!
+%html
+  %head
+    :javascript
+      var bM_click = new Array();
+      var focused;
+
+      //マウスが乗ったとき。
+      function M_over(obj){
+      //クリックされていなければ青にする。
+      if(!bM_click[obj.id]){On(obj,"blue");}
+      }
+
+      //クリックされたとき
+      function M_click(obj){
+        //オンになっていた（フォーカスされていた）
+        //自分をクリックしたなら自分自身をオフ。
+        //フォーカスをオフ。
+        //クリックフラグ[自分自身]をオフ。
+        if (focused != null){
+          Off(obj);
+          focused = null;
+          bM_click[obj.id] = 0;
+        }else{
+          //自分自身をオン。背景色を引数で渡す（赤）。
+          //フォーカスを自分自身に移す。
+          //クリックフラグ[自分自身]をオン
+          On(obj,"red");
+          focused = obj.id;
+          bM_click[obj.id] = 1;
+        }
+      }
+
+      //マウスが去ったとき
+      function M_out(obj){
+        //クリックされていなければオフ。
+        if(!bM_click[obj.id]){Off(obj);}
+      }
+
+      //背景色と文字色チェンジ：オン
+      function On(obj,c){
+        obj.style.backgroundColor = c;
+        obj.style.color = "black";
+      }
+
+      //背景色と文字色チェンジ：オフ
+      function Off(obj){
+        obj.style.backgroundColor = "transparent";
+        obj.style.color = "black";
+      }
+  %body
+    .GridInformation
+      Total Grids : #{@total}</br>
+      Vertical : #{@ver}</br>
+      Horizontal : #{@hor}</br>
+    %table{:border => "1", :cellspacing => "2", :cellpadding => "5", :style => "color : black;"}
+      %tbody
+        - 1.upto @ver do |i|
+          %tr{:id => "tr#{i}"} 
+          - @hor.downto 1 do |j|
+            %td{:id => "td#{j + @hor * (i - 1)}", :onmouseover => "M_over(this)", :onmouseout => "M_out(this)", :onclick => "M_click(this)"} #{j + @hor * (i - 1)}

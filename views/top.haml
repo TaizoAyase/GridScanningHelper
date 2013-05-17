@@ -1,0 +1,15 @@
+!!!
+%html
+  %head
+    %title Grid Scanning Helper
+  %body
+    %p= 'Grid Parameterを入力'
+  %form{:action => '/grids', :method => 'POST', :enctype => 'multipart/form-data'}
+    %p
+      %label{:for => 'vertical'}Vertical:
+      %input{:type => 'text', :name => 'vertical'}
+    %p
+      %label{:for => 'horizontal'}Horizontal:
+      %input{:type => 'text', :name => 'horizontal'}
+    %p
+      %input{:type => 'submit', :value => 'Make Grid'}

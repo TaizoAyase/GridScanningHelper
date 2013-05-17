@@ -1,7 +1,6 @@
 # coding: utf-8
 
 require 'sinatra'
-require 'ap'
 require 'haml'
 
 get '/' do

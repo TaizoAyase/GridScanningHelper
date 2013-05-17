@@ -3,6 +3,7 @@
   %head
     %title Grid Scanning Helper
   %body
+    %h1= 'Grid Scanning Helper'
     %p= 'Grid Parameterを入力'
   %form{:action => '/grids', :method => 'POST', :enctype => 'multipart/form-data'}
     %p
@@ -13,3 +14,6 @@
       %input{:type => 'text', :name => 'horizontal'}
     %p
       %input{:type => 'submit', :value => 'Make Grid'}
+    %p
+    created by
+    %a{:href => 'http://twitter.com/Taizo_Ayase'}@Taizo_Ayase

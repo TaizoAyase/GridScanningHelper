@@ -54,3 +54,5 @@
           %tr{:id => "tr#{i}"} 
           - @hor.downto 1 do |j|
             %td{:id => "td#{j + @hor * (i - 1)}", :onmouseover => "M_over(this)", :onmouseout => "M_out(this)", :onclick => "M_click(this)"} #{j + @hor * (i - 1)}
+    %form
+      %input{:type => 'button', :value => 'back', :onclick => 'history.back()'}

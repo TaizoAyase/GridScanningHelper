@@ -39,5 +39,3 @@ function Off(obj){
   obj.style.backgroundColor = "transparent";
   obj.style.color = "black";
 }
-
-document.write("js is called");
